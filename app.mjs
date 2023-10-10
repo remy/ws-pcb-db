@@ -19,9 +19,9 @@ import Fuse from "https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.esm.js";
 const source = (await (await fetch("./data.json")).json()).map((_) => {
   const id = _.img;
   delete _.img;
-  _.front = `WS_${id}_CF.jpg`;
-  _.back = `WS_${id}_CR.jpg`;
-  _.pcb = `WS_${id}_BF.jpg`;
+  _.front = `WS_${id}_CF.webp`;
+  _.back = `WS_${id}_CR.webp`;
+  _.pcb = `WS_${id}_BF.webp`;
   return _;
 });
 const meta = await (await fetch("./ws-meta.json")).json();
