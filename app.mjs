@@ -10,11 +10,6 @@ import Fuse from "https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.esm.js";
  * @property {string} crc
  */
 
-/**
- * @typedef meta
- *
- */
-
 /** @type record[] */
 const source = (await (await fetch("./data.json")).json()).map((_) => {
   const id = _.img;
