@@ -118,9 +118,9 @@ function eventHandler(event) {
   }
 
   if (event.target.id === "title") {
-    const [title, board] = value.split("^");
+    const [title, crc] = value.split("^");
     selected = source.find((_) => {
-      return title === _.title && board === _.board;
+      return title === _.title && crc === _.crc;
     });
     selectTitle(selected);
   }
@@ -141,7 +141,7 @@ function selectTitle(data) {
 
   const saves = { S: "SRAM", E: "EEPROM", "-": "none" };
 
-  const metadata = [];
+  const metadata = [data.title];
   if (meta[data.crc]) {
     metadata.push(...meta[data.crc]);
     if (!meta[data.crc].includes("2003 mapper")) {
@@ -173,7 +173,7 @@ function updateTitles(board, selected = null) {
       (_) =>
         `<option ${
           selected && selected.title === _.title ? "selected" : ""
-        } value="${_.title}^${_.board}">${_.title} (${_.save})</option>`
+        } value="${_.title}^${_.crc}">${_.title} (${_.save})</option>`
     )
     // .sort((a, b) => (a.toLowerCase() < b.toLowerCase() ? -1 : 1))
     .join("");
